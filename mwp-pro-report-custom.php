@@ -2,7 +2,7 @@
 /*
 Template Name: MainWP Pro Report GSL Web Template
 Description: Custom template for the MainWP Pro Reports extension
-Version: 1.0
+Version: 1.1
 Author: GSL Web Solutions
 Screenshot URI: ../wp-content/plugins/mainwp-pro-reports-extension/images/gslweb.jpg
 */
@@ -156,6 +156,26 @@ $outro = nl2br($outro); // to fix
 			display:block;
 			width:100%;
 		}
+		
+		.rp {
+			display:none;
+			width:0;
+			height:0;
+		}
+		
+		.section-backup tr.rp {
+			display:table-row;
+			width:auto;
+			height:auto;
+		}
+		
+		.section-backup td.rp {
+			display:table-cell;
+			width:auto;
+			height:auto;
+		}
+		
+		
 		</style>
 	</head>
 	<body>
@@ -265,23 +285,23 @@ $outro = nl2br($outro); // to fix
 									</tr>
 									<tr>
 										<td><?php echo __( 'Performance', 'mainwp-pro-reports-extension' ); ?></td>
-										<td style="text-align:center;">[lighthouse.performance.desktop]</td>
-										<td style="text-align:center;">[lighthouse.performance.mobile]</td>
+										<td style="text-align:center;">[lighthouse.performance.desktop]/100</td>
+										<td style="text-align:center;">[lighthouse.performance.mobile]/100</td>
 									</tr>
 									<tr>
 										<td><?php echo __( 'Accessibility', 'mainwp-pro-reports-extension' ); ?></td>
-										<td style="text-align:center;">[lighthouse.accessibility.desktop]</td>
-										<td style="text-align:center;">[lighthouse.accessibility.mobile] </td>
+										<td style="text-align:center;">[lighthouse.accessibility.desktop]/100</td>
+										<td style="text-align:center;">[lighthouse.accessibility.mobile]/100</td>
 									</tr>
 									<tr>
 										<td><?php echo __( 'SEO', 'mainwp-pro-reports-extension' ); ?></td>
-										<td style="text-align:center;">[lighthouse.seo.desktop]</td>
-										<td style="text-align:center;">[lighthouse.seo.mobile]</td>
+										<td style="text-align:center;">[lighthouse.seo.desktop]/100</td>
+										<td style="text-align:center;">[lighthouse.seo.mobile]/100</td>
 									</tr>
 									<tr>
 										<td><?php echo __( 'Best Practices', 'mainwp-pro-reports-extension' ); ?></td>
-										<td style="text-align:center;">[lighthouse.bestpractices.desktop]</td>
-										<td style="text-align:center;">[lighthouse.bestpractices.mobile]</td>
+										<td style="text-align:center;">[lighthouse.bestpractices.desktop]/100</td>
+										<td style="text-align:center;">[lighthouse.bestpractices.mobile]/100</td>
 									</tr>
 								</tbody>
 							</table>
@@ -411,7 +431,7 @@ $outro = nl2br($outro); // to fix
 								<tr>
 									<td>[plugin.updated.date]</td>
 									<td><span style="font-weight:bold;<?php echo esc_html($accent_color); ?>">[plugin.name]</span></td>
-									<td>From [plugin.old.version] to <span style="font-weight:bold;<?php echo esc_html($accent_color); ?>">[plugin.current.version]</span></td>
+									<td>From [plugin.old.version] to <span style="font-weight:bold;<?php echo esc_html($accent_color); ?>">[plugin.current.version]</span></td><!-- plugin -->
 								</tr>
 								[/section.plugins.updated]
 							</tbody>
@@ -462,7 +482,7 @@ $outro = nl2br($outro); // to fix
 				[config-section-data]
 				<?php echo $config_tokens[$showhide_values['backups']]; ?>
 				<div class="page-break"></div>
-				<div class="report-section" style="padding:0;">
+				<div class="section-backup report-section" style="padding:0;">
 					<div style="padding:0 60px;">
 						<h2><?php echo __( 'Backups', 'mainwp-pro-reports-extension' ); ?></h2>
 						<?php do_action( 'mainwp_pro_reports_before_backups' ); ?>
