@@ -229,13 +229,68 @@ $outro = nl2br($outro); // to fix
 								[config-section-data]
 								<?php echo $config_tokens[$showhide_values['pagespeed']]; ?>
 								[remove-if-empty]
-								<tr></tr>
+								<tr><td><?php echo __( 'Average Pagespeed', 'mainwp-pro-reports-extension' ); ?></td><td>[pagespeed.average.desktop] / 100</td></tr>
 								[/remove-if-empty]
 								[/config-section-data]
 							</tbody>
 						</table>
 					</div>
 				</div>
+				
+				<div class="page-break"></div>
+				
+				<!-- Performance Data -->
+				
+				<?php if ( is_plugin_active( 'mainwp-lighthouse-extension/mainwp-lighthouse-extension.php') ) : ?>
+				[config-section-data]
+				<?php echo $config_tokens[$showhide_values['lighthouse']]; ?>
+				
+				<div class="report-section" style="padding:0;">
+					<div style="padding:0 60px;">
+						<h2><?php echo __( 'Performance', 'mainwp-pro-reports-extension' ); ?></h2>
+						<?php  do_action( 'mainwp_pro_reports_before_lighthouse' ); ?>
+							<table cellspacing="0" class="left-th">
+								<thead>
+									<tr>
+										<th></th>
+										<th style="text-align:center;"><?php echo __( 'Desktop', 'mainwp-pro-reports-extension' ); ?></th>
+										<th style="text-align:center;"><?php echo __( 'Mobile', 'mainwp-pro-reports-extension' ); ?></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><?php echo __( 'Last Check', 'mainwp-pro-reports-extension' ); ?></td>
+										<td style="text-align:center;">[lighthouse.lastcheck.desktop]</td>
+										<td style="text-align:center;">[lighthouse.lastcheck.mobile]</td>
+									</tr>
+									<tr>
+										<td><?php echo __( 'Performance', 'mainwp-pro-reports-extension' ); ?></td>
+										<td style="text-align:center;">[lighthouse.performance.desktop]</td>
+										<td style="text-align:center;">[lighthouse.performance.mobile]</td>
+									</tr>
+									<tr>
+										<td><?php echo __( 'Accessibility', 'mainwp-pro-reports-extension' ); ?></td>
+										<td style="text-align:center;">[lighthouse.accessibility.desktop]</td>
+										<td style="text-align:center;">[lighthouse.accessibility.mobile] </td>
+									</tr>
+									<tr>
+										<td><?php echo __( 'SEO', 'mainwp-pro-reports-extension' ); ?></td>
+										<td style="text-align:center;">[lighthouse.seo.desktop]</td>
+										<td style="text-align:center;">[lighthouse.seo.mobile]</td>
+									</tr>
+									<tr>
+										<td><?php echo __( 'Best Practices', 'mainwp-pro-reports-extension' ); ?></td>
+										<td style="text-align:center;">[lighthouse.bestpractices.desktop]</td>
+										<td style="text-align:center;">[lighthouse.bestpractices.mobile]</td>
+									</tr>
+								</tbody>
+							</table>
+						<?php do_action( 'mainwp_pro_reports_after_lighthouse' ); ?>
+					</div>
+				</div>
+				[/config-section-data]
+				<?php endif; ?>
+				<!-- End Performance Data -->
 				
 				<div class="page-break"></div>
 				
